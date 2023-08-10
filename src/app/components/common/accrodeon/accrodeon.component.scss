@@ -1,0 +1,25 @@
+.accordion {
+  width: 60%;
+  margin: 0 auto;
+}
+.accordion-button {
+  background-color: rgba(13,110,253, 1)!important;
+  color: white;
+  height: 65px;
+  font-weight: normal;
+  font-family:Arial, Helvetica, sans-serif;
+  font-weight: bold;
+}
+.accordion-item {
+  margin-bottom: 8px;
+  border-radius: 0.375rem;
+  -webkit-box-shadow: 0px 0px 29px 7px rgba(23, 43, 58, 0.08);
+  -moz-box-shadow: 0px 0px 29px 7px rgba(23, 43, 58, 0.08);
+  box-shadow: 0px 0px 29px 7px rgba(23, 43, 58, 0.08);
+}
+.accordion-item:not(:first-of-type) {
+  border-top: 1px solid #dee2e6;
+}
+.accordion-button::after {
+  background-image: url("../../../../assets/images/Vector (1).png");
+}

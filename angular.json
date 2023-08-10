@@ -30,9 +30,13 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "src/bootstrap.min.css",
+              "node_modules/@ngneat/hot-toast/src/styles/styles.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "src/bootstrap.min.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -100,5 +104,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": "aade03a2-0bd6-44b7-8120-a2eb4976303c"
   }
 }

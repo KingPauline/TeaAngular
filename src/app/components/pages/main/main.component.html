@@ -1,0 +1,38 @@
+<section class="main-info">
+  <div class="container p-0">
+    <div class="tea-slider mt-5 pt-4 wow animate__fadeIn">
+      <div class="slider-item-1 ">
+        <div class="pt-5 ps-5 pb-5">
+          <div class="help mt-5"></div>
+          <div class="info-1 mt-5 pt-5 ps-5 ms-4">
+            <div class="title-1 mb-5"><p class="fs-1 fw-bold">Скидки на травяные чаи</p></div>
+            <div class="details-1 pt-4 fs-5 mb-5"><p>Узнай все подробности, заполнив заявку</p></div>
+            <div class="pt-4 pb-5">
+              <a class="hvr-grow-shadow">
+                <button type="button" class="btn btn-primary px-5" [routerLink] = "'/catalog'">Заполнить</button>
+              </a>
+            </div>
+            <div class="help py-5">...</div>
+          </div>
+        </div>
+      </div>
+      <div class="question-title mt-5 pt-4">
+        <p class="fs-2 fw-bold text-center mb-5 wow animate__pulse">Ответы на часто задаваемые вопросы</p>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="popap" *ngIf="popapShow">
+  <div class="popap-info">
+    <p>Посмотрите наши чайные коллекции</p>
+    <a class="button" [routerLink]="'/catalog'" href="#" style="--color:#0a3656;">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      Смотреть
+    </a>
+    <a class="close" (click) = "popapClose()"><img src="../../../../assets/images/icons-close.png" alt=""></a>
+  </div>
+</div>
+<accordeon></accordeon>

@@ -1,0 +1,79 @@
+<form [formGroup]='orderForm' *ngIf="formShow" (ngSubmit)= "createOrder()" class="row g-3 needs-validation w-50 m-auto wow animate__flipInX" id="order-form"
+      novalidate>
+  <div class="form-title mt-5 pt-4 mb-5 wow animate__pulse">
+    <p class="fs-2 fw-bold text-center ">Сделать заказ</p>
+  </div>
+  <div class="col-lg-4">
+    <label for="FirstName" class="form-label">Товар</label>
+    <input type="text" formControlName='product' class="form-control" id="Product" readonly>
+  </div>
+  <div class="col-lg-4">
+    <label for="FirstName" class="form-label">Имя</label>
+    <input type="text" formControlName='name' class="form-control" id="FirstName">
+    <div class="feedback" *ngIf="name?.invalid
+    && (name?.touched || name?.dirty)">
+      <div *ngIf="name?.errors?.['required']">Пожалуйста, заполните поле "имя"!</div>
+      <div *ngIf="name?.errors?.['pattern']">Поле "имя" должно содержать только буквы</div>
+    </div>
+  </div>
+  <div class="col-lg-4">
+    <label for="LastName" class="form-label">Фамилия</label>
+    <input type="text" formControlName='surname' class="form-control" id="LastName">
+    <div class="feedback" *ngIf="surname?.invalid
+    && (surname?.touched || surname?.dirty)">
+      <div *ngIf="surname?.errors?.['required']">Пожалуйста, заполните поле "фамилия"!</div>
+      <div *ngIf="surname?.errors?.['pattern']">Поле "фамилия" должно содержать только буквы</div>
+    </div>
+  </div>
+  <div class="col-lg-4">
+    <label for="Telephone" class="form-label">Телефон</label>
+    <input type="text" formControlName='telephone' class="form-control" id="Telephone">
+    <div class="feedback" *ngIf="telephone?.invalid
+    && (telephone?.touched || telephone?.dirty)">
+      <div *ngIf="telephone?.errors?.['required']">Пожалуйста, заполните поле "телефон"!</div>
+      <div *ngIf="telephone?.errors?.['pattern']">Поле «телефон» должно содержать только цифры и знак +</div>
+    </div>
+  </div>
+  <div class="col-lg-6">
+    <label for="Country" class="form-label">Страна</label>
+    <input type="text" class="form-control" formControlName='country' id="Country">
+    <div class="feedback" *ngIf="country?.invalid
+    && (country?.touched || country?.dirty) && (country?.errors?.['required'])">
+      Пожалуйста, заполните поле "страна"
+    </div>
+  </div>
+  <div class="col-lg-6">
+    <label for="Zip" class="form-label">Индекс</label>
+    <input type="number" formControlName='zip' class="form-control" id="Zip">
+    <div class="feedback" *ngIf="zip?.invalid
+    && (telephone?.touched || zip?.dirty)">
+      <div *ngIf="zip?.errors?.['required']">Пожалуйста, заполните поле "индекс"</div>
+      <div *ngIf="zip?.errors?.['pattern']"> Индекс должен содержать 6 цифр!</div>
+    </div>
+  </div>
+  <div class="col-lg-12">
+    <label for="Address" class="form-label">Адрес</label>
+    <input type="text" formControlName='address' class="form-control" id="Address">
+    <div class="feedback" *ngIf="address?.invalid
+    && (address?.touched || address?.dirty)">
+      <div *ngIf="address?.errors?.['required']">Пожалуйста, заполните поле "адрес"</div>
+      <div *ngIf="address?.errors?.['pattern']"> В поле «Адрес» можно вводить: буквы, цифры, пробелы, дефис и слеш</div>
+    </div>
+  </div>
+  <div class="col-lg-4">
+    <label for="FirstName" class="form-label">Комментарий к заказу</label>
+    <input type="text-area" formControlName='comment'  class="form-control" id="ProductComment" required>
+  </div>
+  <div class="col-12">
+    <button [disabled]="orderForm.invalid || orderForm.disabled" class="btn btn-primary px-5 btn-sub" type="submit" >Отправить</button>
+  </div>
+  <div class="unsuccessShow" *ngIf = "unsuccessShow" >
+    Произошла ошибка. Попробуйте еще раз
+  </div>
+</form>
+<div *ngIf = "successShow" class="successShow">
+  Спасибо за заказ :)
+</div>
+<div class="loader-bg" *ngIf="loading">
+  <span class="loader"></span>
+</div>

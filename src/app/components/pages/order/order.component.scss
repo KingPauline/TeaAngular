@@ -1,0 +1,17 @@
+input.ng-invalid.ng-dirty.ng-touched {
+  border-color: darkred;
+  box-shadow: 0px 0px 8px 0px rgb(236, 0, 0);
+}
+.feedback {
+  color: darkred;
+}
+.successShow {
+  font-size: 30px;
+  text-align: center;
+  padding: 200px;
+  color: #030352;
+}
+.unsuccessShow {
+  color: darkred;
+  font-weight: bold;
+}
