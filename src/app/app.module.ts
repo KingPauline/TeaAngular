@@ -13,6 +13,7 @@ import { ProductComponent } from './components/pages/product/product.component';
 import { OrderComponent } from './components/pages/order/order.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HotToastModule} from "@ngneat/hot-toast";
+import { NotFoundComponent } from './components/pages/not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import {HotToastModule} from "@ngneat/hot-toast";
     AccrodeonComponent,
     CatalogComponent,
     ProductComponent,
-    OrderComponent
+    OrderComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,

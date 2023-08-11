@@ -26,7 +26,4 @@ export class HttpRequestsService {
     return this.http.post<{success: number, message?:string}>('https://testologia.site/order-tea', data)
   }
 
-  getSearchProducts(param:string): Observable<ProductType[]> {
-    return  this.http.get<ProductType[]>( 'https://testologia.site/tea?search=' + param)
-  }
 }

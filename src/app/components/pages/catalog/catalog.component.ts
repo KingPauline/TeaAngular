@@ -3,7 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {ProductType} from "../../../types/product.type";
 import {HttpRequestsService} from "../../../services/http-requests.service";
 import {SearchService} from "../../../services/search.service";
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'catalog',
@@ -14,7 +14,15 @@ export class CatalogComponent implements OnInit {
 
   public title: string = ''
   public loading: boolean = false;
-  private searchFlag: boolean = false;
+  public searchQuery: string | null = null;
+  public searchFlag: boolean = false;
+  public searchProduct: ProductType = {
+    id: 0,
+    image: '',
+    title: '',
+    price: 0,
+    description: ''
+  }
   public products: ProductType[] = [{
     id: 0,
     image: '',
@@ -23,45 +31,56 @@ export class CatalogComponent implements OnInit {
     description: ''
   }];
 
-  constructor(private http: HttpClient, private productService: HttpRequestsService, private searchService: SearchService, private router: Router) {
+  constructor(private http: HttpClient, private productService: HttpRequestsService, private searchService: SearchService, private router: Router, private activatedRoute: ActivatedRoute) {
   }
 
   ngOnInit() {
-    this.loading = true;
-    this.searchService.subject.subscribe({
-      next: (querySearch) => {
-        if (querySearch) {
-          //this.router.navigate(['/catalog'])
-          this.title = 'Результаты поиска по запросу ' + querySearch;
-          this.productService.getSearchProducts(querySearch).subscribe(
-            {
-              next: (data) => {
-                this.loading = false;
-                this.searchFlag = true;
-                this.products = data;
-                if (data.length ===0) {
+    this.activatedRoute.queryParams
+      .subscribe(params => {
+        this.searchQuery = params['search'];
+        console.log(this.searchQuery)
+        if (this.searchQuery) {
+          this.title = 'Результаты поиска по запросу ' + this.searchQuery;
+          console.log(typeof this.searchQuery)
+          this.searchService.getSearchProducts(this.searchQuery)
+            .subscribe(
+              {
+                next: (data) => {
+                  this.loading = false;
+                  this.searchFlag = true;
+                  console.log(Object.values(data));
+                  //console.log(this.searchProduct);
+                  if (data.length === 0) {
+                    this.title = 'Ничего не найдено'
+                    this.searchProduct = {
+                      id: 0,
+                      image: "../../../../assets/images/notFoundImage.png",
+                      title: '',
+                      price: 0,
+                      description: ''
+                    }
+                  } else {
+                    this.searchProduct = Object.values(data)[0];
+                  }
+                },
+                error: (err: string) => {
+                  console.log(err)
                   this.title = 'Ничего не найдено'
                 }
-              },
-              error: (err: string) => {
-                console.log(err)
-                this.title = 'Ничего не найдено'
               }
-            }
-          )
+            )
+        } else {
+          this.title = 'Наша чайная коллекция'
+          this.productService.getProducts()
+            .subscribe(
+              {
+                next:
+                  (data) => {
+                    this.loading = false
+                    this.products = data
+                  },
+              })
         }
-      },
-    })
-    if (!this.searchFlag) {
-      this.title = 'Наша чайная коллекция'
-      this.productService.getProducts()
-        .subscribe(
-          {
-            next: (data) => {
-              this.loading = false
-              this.products = data
-            },
-          })
-    }
+      })
   }
 }

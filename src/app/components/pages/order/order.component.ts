@@ -50,7 +50,6 @@ export class OrderComponent {
 
   createOrder() {
     this.loading = true;
-    // this.toast.info("Заказ создан")
     this.httpService.createOrder({
       name: this.orderForm.get('name')?.value as string,
       last_name: this.orderForm.get('surname')?.value as string,
@@ -66,7 +65,6 @@ export class OrderComponent {
         if (response.success && !response.message) {
           this.formShow = false;
           this.successShow = true;
-          alert('Спасибо за заказ')
           this.toast.info("Спасибо за заказ")
           this.router.navigate(['/catalog']);
 
@@ -74,7 +72,6 @@ export class OrderComponent {
         } else {
           this.unsuccessShow = true;
           this.toast.info("Произошла ошибка")
-          alert('Произошла ошибка')
           this.router.navigate(['/catalog']);
           setTimeout(() => {
             this.unsuccessShow = false;
