@@ -12,7 +12,8 @@ const routes: Routes = [
   {path: 'catalog', component: CatalogComponent},
   {path: 'catalog/:id', component: ProductComponent},
   {path: 'order', component: OrderComponent},
-  {path: '**', component: NotFoundComponent},
+  {path: 'not-found', component: NotFoundComponent},
+  {path: '**', redirectTo:'not-found', pathMatch: 'full'},
 ];
 
 @NgModule({
