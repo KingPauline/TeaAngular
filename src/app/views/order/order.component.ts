@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
 import {FormBuilder, Validators} from "@angular/forms";
-import {CartService} from "../../../services/cart.service";
-import {HttpRequestsService} from "../../../services/http-requests.service";
+
+
 import {Router} from "@angular/router";
 import {HotToastService} from "@ngneat/hot-toast";
+import {CartService} from "../../shared/services/cart.service";
+import {HttpRequestsService} from "../../shared/services/http-requests.service";
 
 @Component({
   selector: 'app-order',

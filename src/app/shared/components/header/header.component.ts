@@ -1,9 +1,10 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {Subject, Subscription} from "rxjs";
-import {SearchService} from "../../../services/search.service";
-import {FormBuilder, FormControl, FormGroup} from "@angular/forms";
+import {Subscription} from "rxjs";
+
+import {FormBuilder} from "@angular/forms";
 import {HotToastService} from "@ngneat/hot-toast";
 import {Router} from "@angular/router";
+import {SearchService} from "../../services/search.service";
 
 @Component({
   selector: 'header-component',

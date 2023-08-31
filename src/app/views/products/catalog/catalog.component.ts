@@ -1,9 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {ProductType} from "../../../types/product.type";
-import {HttpRequestsService} from "../../../services/http-requests.service";
-import {SearchService} from "../../../services/search.service";
+
 import {ActivatedRoute, Router} from "@angular/router";
+import {ProductType} from "../../../../types/product.type";
+import {HttpRequestsService} from "../../../shared/services/http-requests.service";
+import {SearchService} from "../../../shared/services/search.service";
 
 @Component({
   selector: 'catalog',

@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
-import {ProductType} from "../types/product.type";
+
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {FormType} from "../types/form.type";
+
+import {ProductType} from "../../../types/product.type";
+import {FormType} from "../../../types/form.type";
 
 @Injectable({
   providedIn: 'root'

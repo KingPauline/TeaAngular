@@ -31,11 +31,9 @@
             ],
             "styles": [
               "src/styles.scss",
-              "src/bootstrap.min.css",
               "node_modules/@ngneat/hot-toast/src/styles/styles.scss"
             ],
             "scripts": [
-              "src/bootstrap.min.js"
             ]
           },
           "configurations": {
