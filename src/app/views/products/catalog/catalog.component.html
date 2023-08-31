@@ -2,8 +2,8 @@
   <div class="collections">
     <div class="title">{{title}}</div>
     <div class="row row-cols-1 row-cols-md-2 gy-4">
-      <div *ngIf="!searchFlag">
         <div class="col" *ngFor="let product of products">
+          <div *ngIf="!searchFlag">
           <div class="card h-100">
             <a href="{{product.image}}" class="image-popup-vertical-fit"><img
               src="{{product.image}}" class="card-img-top" alt="..."></a>
@@ -21,7 +21,7 @@
         </div>
       </div>
 
-      <div  *ngIf="searchFlag" >
+      <div  *ngIf="searchFlag" class="col">
         <div class="col">
           <div class="card h-100">
             <a href="{{searchProduct.image}}" class="image-popup-vertical-fit"><img
