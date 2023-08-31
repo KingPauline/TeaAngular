@@ -39,7 +39,6 @@ export class CatalogComponent implements OnInit {
     this.activatedRoute.queryParams
       .subscribe(params => {
         this.searchQuery = params['search'];
-        console.log(this.searchQuery)
         if (this.searchQuery) {
           this.title = 'Результаты поиска по запросу ' + this.searchQuery;
           console.log(typeof this.searchQuery)
